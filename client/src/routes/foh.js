@@ -7,7 +7,6 @@ import Main from './../components/Menus/Main';
 import Drinks from './../components/Menus/Drinks';
 import { Row, Col, Card } from 'react-bootstrap';
 
-
 function FoH() {
 
     const [toggleSides, setToggleSides] = useState({
@@ -29,17 +28,21 @@ function FoH() {
         setToggleMain({ display: "none" })
         setToggleDrinks({ display: "none" })
     }
-
+        // This shows the menu options when you click a "Menu Group"
+        // enableMenu gets menu from CompleteNavbar buttons
     function enableMenu(menu) {
         if (menu === "Sides") {
             disableAll();
             setToggleSides({ display: "inline-block" });
             console.log({ toggleSides })
-        } else if (menu === "Appetizers") {
+        } else 
+        if (menu === "Appetizers") {
             disableAll();
             setToggleAppetizers({ display: "inline-block" });
             console.log({ toggleAppetizers })
-        } else if (menu === "Main") {
+
+        }
+        else if (menu === "Main") {
             disableAll();
             setToggleMain({ display: "inline-block" });
             console.log({ toggleMain })
@@ -50,6 +53,35 @@ function FoH() {
         }
     }
 
+
+
+
+
+
+    const [orderState, setOrder] = useState({
+        // This will hold the clicked order items
+        Order: [],
+    });
+
+    const addToArray = (inputObject) => {
+        let foodItem = {
+            name: inputObject.name,
+            cost: inputObject.cost,
+            desc: inputObject.desc
+        };
+
+        // Look into .concat vs .push for Stateful components
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+        setOrder({ Order: [...orderState.Order.concat(foodItem)] })
+    };
+
+
+
+
+
+
+
+ 
     return (
         <div>
             <CompleteNavbar enableMenu={enableMenu} />
@@ -57,28 +89,44 @@ function FoH() {
                 <Col xs={1}></Col>
                 <Col xs={6} >
                     <Card style={toggleSides}>
-                        <Sides />
+                        <Sides addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleAppetizers}>
-                        <Appetizers />
+                        <Appetizers addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleMain}>
-                        <Main />
+                        <Main addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleDrinks}>
-                        <Drinks />
+                        <Drinks addArrayItem={addToArray} />
                     </Card>
                 </Col>
                 <Col xs={1}></Col>
-                <Col xs={3}>
+                <Col xs={3}> 
                     <Card>
-                        Actual order goes here
+                        <table>
+                            {orderState.Order.map(row => (
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        {row.name}
+                                    </td>
+                                    <td>
+                                        {row.desc}
+                                    </td>
+                                    <td>
+                                        {row.cost}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            ))}
+                        </table>
                     </Card>
                 </Col>
             </Row>
 
 
-        </div>
+        </div> 
     )
 }
 
