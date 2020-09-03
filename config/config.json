@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Rk0978tb",
-    "database": "notapos",
+    "password": "9tjeZmfhVxlUfqInR@2T",
+    "database": "pos_db",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql"
