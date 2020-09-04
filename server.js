@@ -8,16 +8,16 @@ const mysql = require("mysql");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  console.log("******STARTED USING JAWSDB*******");
-} 
-// else if (process.env.NODE_ENV === "production") {
+}
+// if (process.env.JAWSDB_URL) {
+//   connection = mysql.createConnection(process.env.JAWSDB_URL);
 //   app.use(express.static("client/build"));
+//   console.log("******STARTED USING JAWSDB*******");
+// } 
+// else if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build")); 
 // } 
 else {
   connection = mysql.createConnection({ 
