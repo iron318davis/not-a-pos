@@ -17,14 +17,6 @@ if (process.env.JAWSDB_URL) {
 } 
 // else if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
-//   //   connection = mysql.createConnection({
-//   //     host: "localhost",
-//   //     port: 3306,
-//   //     user: "root",
-//   //     password: "Secret2020$",
-//   //     database: "burgers_db"
-//   //  });
-
 // } 
 else {
   connection = mysql.createConnection({
@@ -38,8 +30,13 @@ else {
 }
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
+
+app.get('*', function (req, res) {
+  const index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
 });
 
 db.sequelize.sync({ force: true }).then(function () {
