@@ -10,6 +10,7 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  console.log("Line 13 server.js")
 }
 // if (process.env.JAWSDB_URL) {
 //   connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -36,8 +37,10 @@ else {
 // });
 
 app.get('*', function (req, res) {
+  console.log("server.js line 40")
   const index = path.join(__dirname, 'build', 'index.html');
   res.sendFile(index);
+  console.log("server.js line 43")
 });
 
 db.sequelize.sync({ force: true }).then(function () {
