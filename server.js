@@ -13,6 +13,7 @@ app.use(express.json());
 // }
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
+  app.use(express.static("client/build"));
   console.log("******STARTED USING JAWSDB*******");
 } 
 // else if (process.env.NODE_ENV === "production") {
