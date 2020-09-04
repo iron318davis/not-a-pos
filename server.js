@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
 const mysql = require("mysql");
-console.log(db.Pin)
+// console.log(db.Pin)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
