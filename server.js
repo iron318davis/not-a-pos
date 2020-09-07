@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // if (process.env.JAWSDB_URL) {
 //   connection = mysql.createConnection(process.env.JAWSDB_URL);
+//   connection = mysql.createConnection(process.env.NODE_ENV);
 //   app.use(express.static("client/build"));
 //   console.log("******STARTED USING JAWSDB*******");
 // } 
