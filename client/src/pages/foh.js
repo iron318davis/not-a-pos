@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import CompleteNavbar from './../components/CompleteNavbar';
-import Appetizers from './../components/Menus/Appetizers';
-import Sides from './../components/Menus/Sides';
-import Main from './../components/Menus/Main';
-import Drinks from './../components/Menus/Drinks';
-import { Row, Col, Card } from 'react-bootstrap';
+import API from "../utils/API"
+import CompleteNavbar from '../components/CompleteNavbar';
+import Appetizers from '../components/Menus/Appetizers';
+import Sides from '../components/Menus/Sides';
+import Main from '../components/Menus/Main';
+import Drinks from '../components/Menus/Drinks';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 
 function FoH() {
 
@@ -57,7 +58,6 @@ function FoH() {
 
 
 
-
     const [orderState, setOrder] = useState({
         // This will hold the clicked order items
         Order: [],
@@ -78,7 +78,20 @@ function FoH() {
 
 
 
-
+    function handleOrderSubmit(event) {
+        event.preventDefault();
+        API.saveOrder({
+            orderID: 1,
+            employeeID: 1,
+            subtotal: 2.22,
+            total: 2.22
+        })
+            .then(() => setOrder({
+                Order: []
+            }))
+            //.then(() => loadBooks())
+            .catch(err => console.log(err));
+    }
 
 
  
@@ -121,6 +134,7 @@ function FoH() {
                                 </tbody>
                             ))}
                         </table>
+                        <Button variant='success' onClick={handleOrderSubmit}>Submit Order</Button>
                     </Card>
                 </Col>
             </Row>

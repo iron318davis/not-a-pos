@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const routes = require("./routes");
 const db = require("./models");
 const mysql = require("mysql");
 // console.log(db.Pin)
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // if (process.env.JAWSDB_URL) {
 //   connection = mysql.createConnection(process.env.JAWSDB_URL);
+//   connection = mysql.createConnection(process.env.NODE_ENV);
 //   app.use(express.static("client/build"));
 //   console.log("******STARTED USING JAWSDB*******");
 // } 
@@ -30,6 +32,8 @@ else {
   });
   console.log("Connected locally");
 }
+
+app.use(routes);
 // Send every request to the React app
 // Define any API routes before this runs
 // app.get("*", function (req, res) {
