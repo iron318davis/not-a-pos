@@ -40,28 +40,24 @@ CREATE TABLE menu (
     categoryID int,
     FOREIGN KEY (categoryID) REFERENCES categories(categories_id),
     -- fk -->categories price decimal(13, 2) NOT NULL,
+    price int(255),
     item_description varchar(255)
 );
 
-CREATE TABLE customer_order (
-    customer_order_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    orderID int NOT NULL,
-    -- thinking this is Table # or some other similar concept
+CREATE TABLE `Order` (
+    orderID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     employeeID int NOT NULL,
     FOREIGN KEY (employeeID) REFERENCES employees(employee_id),
     -- fk -->employees orderDtTm DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    closedDtTm datetime,
     subtotal decimal(13, 2),
     total decimal(13, 2)
 );
 
-CREATE TABLE menu_item_ordered (
-    menu_item_ordered_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    customerOrderID int NOT NULL,
-    FOREIGN KEY (customerOrderID) REFERENCES customer_order(customer_order_id),
-    -- fk -->customer_order menuID int NOT NULL,
+CREATE TABLE OrderItems (
+    ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    orderID int NOT NULL,
+    FOREIGN KEY (orderID) REFERENCES `Order`(orderID),
     menuID int NOT NULL,
     FOREIGN KEY (menuID) REFERENCES menu(menu_id),
-    -- fk -->menu quantity int NOT NULL DEFAULT 1,
-    subtotal decimal(13, 2) NOT NULL
+    ItemName varchar(255) not null
 );
