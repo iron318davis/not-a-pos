@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const routes = require("./routes");
 const db = require("./models");
 const mysql = require("mysql");
 // console.log(db.Pin)
@@ -31,6 +32,8 @@ else {
   });
   console.log("Connected locally");
 }
+
+app.use(routes);
 // Send every request to the React app
 // Define any API routes before this runs
 // app.get("*", function (req, res) {
