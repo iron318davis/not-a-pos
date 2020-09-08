@@ -30,3 +30,46 @@ VALUES
 ,('Wine',4,4.99,'Not from a box, but this isn''t fancy')
 ,('Juice',4,0.99,'Hand squeezed from the bottles we got from the factory')
 ;
+
+insert into pos_db.employee_role
+(
+`employee_role_id`,
+`roleName`
+)
+values
+(1,'FoH');
+
+Insert into pos_db.employees
+(
+  `employee_id`,
+  `firstName`,
+  `lastName`,
+  `pin`,
+  `clocked_in`,
+  `address`,
+  `city`,
+  `phone`,
+  `roleID`
+)
+Values
+(1,'first1','last1',1,true,'123 Lane1','Minneapolis1','111-222-3333',1),
+(2,'first2','last2',2,true,'123 Lane2','Minneapolis2','111-222-3333',1);
+
+insert into pos_db.`order`
+(
+    `orderID`,
+    `employeeID`,
+    `subtotal`,
+    `total`
+)
+values
+(1,1,1,1);
+
+insert into pos_db.OrderItems
+(
+    `orderID`,
+    `menuID`,
+    `itemName`
+)
+values
+(1,1,'TestStaticItemName');
