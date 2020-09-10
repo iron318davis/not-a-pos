@@ -6,7 +6,7 @@ import Appetizers from '../components/Menus/Appetizers';
 import Sides from '../components/Menus/Sides';
 import Main from '../components/Menus/Main';
 import Drinks from '../components/Menus/Drinks';
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { Row, Col, Card, Button,Table } from 'react-bootstrap';
 
 function FoH() {
 
@@ -116,8 +116,16 @@ function FoH() {
                 </Col>
                 <Col xs={1}></Col>
                 <Col xs={3}> 
-                    <Card>
-                        <table>
+                    {/* <Card> */}
+                        <Table striped bordered hover>
+                                <thead>
+                                <tr>
+                                  
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
                             {orderState.Order.map(row => (
                                 <tbody>
                                 <tr>
@@ -133,9 +141,9 @@ function FoH() {
                                 </tr>
                                 </tbody>
                             ))}
-                        </table>
+                        </Table>
                         <Button variant='success' onClick={handleOrderSubmit}>Submit Order</Button>
-                    </Card>
+                    {/* </Card> */}
                 </Col>
             </Row>
 
