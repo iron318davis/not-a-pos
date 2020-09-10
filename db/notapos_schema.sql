@@ -1,11 +1,10 @@
-DROP DATABASE IF EXISTS pos_db;
+/* DROP DATABASE IF EXISTS pos_db; */
+
 CREATE DATABASE pos_db;
+
 USE pos_db;
+
 CREATE TABLE pos_db.employee_role (
-    employee_role_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    roleName varchar(255) NOT NULL -- Front of House
-    -- -- runner (just an idea)
-    -- -- host (just an idea)
     -- -- waitstaff (just an idea)
     -- Back of House
     -- Manager
