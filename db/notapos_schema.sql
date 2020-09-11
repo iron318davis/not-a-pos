@@ -5,6 +5,10 @@ CREATE DATABASE pos_db;
 USE pos_db;
 
 CREATE TABLE pos_db.employee_role (
+    employee_role_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    roleName varchar(255) NOT NULL -- Front of House
+    -- -- runner (just an idea)
+    -- -- host (just an idea)
     -- -- waitstaff (just an idea)
     -- Back of House
     -- Manager
@@ -22,12 +26,14 @@ CREATE TABLE employees (
     city varchar(255),
     phone varchar(255),
     roleID int NOT NULL,
-    FOREIGN KEY (roleID) REFERENCES employee_role(employee_role_id) -- fk -->employee_role
+    FOREIGN KEY (roleID) REFERENCES employee_role(employee_role_id) 
+    -- fk -->employee_role
 );
 
 CREATE TABLE categories (
     categories_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    category_name varchar(255) NOT NULL -- Starters
+    category_name varchar(255) NOT NULL 
+    -- Starters
     -- Mains
     -- Dessert
     -- Drinks
@@ -38,7 +44,8 @@ CREATE TABLE menu (
     itemName varchar(255) NOT NULL,
     categoryID int,
     FOREIGN KEY (categoryID) REFERENCES categories(categories_id),
-    -- fk -->categories price decimal(13, 2) NOT NULL,
+    -- fk -->categories 
+    price decimal(13, 2) NOT NULL,
     price int(255),
     item_description varchar(255)
 );
@@ -47,7 +54,8 @@ CREATE TABLE `Order` (
     orderID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     employeeID int NOT NULL,
     FOREIGN KEY (employeeID) REFERENCES employees(employee_id),
-    -- fk -->employees orderDtTm DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    -- fk -->employees 
+    orderDtTm DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     subtotal decimal(13, 2),
     total decimal(13, 2)
 );
