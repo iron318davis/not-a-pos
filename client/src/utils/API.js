@@ -13,9 +13,33 @@ export default {
 //   deleteBook: function(id) {
 //     return axios.delete("/api/books/" + id);
 //   },
-  // Saves a book to the database
+
+
+  // Saves an order to the database
   saveOrder: function(orderData) {
       console.log(orderData);
     return axios.post("/api/order", orderData);
+  },
+
+  // GET THE FOOD CATEGORIES
+  getCategories: function() {
+    return axios.get("/api/categories");
+  },
+
+  // FILL CATEGORIES WITH FOOD ITEMS
+  getCategoryItems: function(categories_id) {
+    return axios.get("/api/categories/" + categories_id)
+  },
+
+  // BOH GET ORDERS
+  getToCookOrders: function() {
+    return axios.get("/api/orders")
+  },
+
+  //FOH COOKED ORDERS
+  getToServeOrders: function() {
+
   }
+
+
 };
