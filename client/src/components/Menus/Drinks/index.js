@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
+import './style.css';
 
 function Drinks(props) {
     const handleClick = (item) => { props.addArrayItem(item) }
@@ -15,7 +16,7 @@ function Drinks(props) {
         <>
             <Row>
                 <Col>
-                    <Button variant="secondary" onClick={() => { handleClick(item) }}>Drinks</Button>
+                    <Button className = 'drink-buttons' variant="secondary" onClick={() => { handleClick(item) }}>Drinks</Button>
                 </Col>
             </Row>
         </>
