@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
-
+import './style.css';
 function Main(props) {
     const handleClick = (item) => { props.addArrayItem(item) }
 
@@ -13,30 +13,31 @@ function Main(props) {
 
     return (
         <>
-            <Row>
+            <Row >
                 <Col>
-                    <Button variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
+                    <Button className = 'top-main-buttons' variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
                 </Col>
                 <Col>
-                    <Button variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
+                    <Button className = 'top-main-buttons' variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
                 </Col>
                 <Col>
-                    <Button variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
+                    <Button className = 'top-main-buttons' variant="secondary" onClick={() => { handleClick(item) }}>Main</Button>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Button variant="secondary">OldMain</Button>
+                    <Button className = 'bottom-main-buttons' variant="secondary">OldMain</Button>
                 </Col>
                 <Col>
-                    <Button variant="secondary">OldMain</Button>
+                    <Button className = 'bottom-main-buttons' variant="secondary">OldMain</Button>
                 </Col>
                 <Col>
-                    <Button variant="secondary">OldMain</Button>
+                    <Button className = 'bottom-main-buttons' variant="secondary">OldMain</Button>
                 </Col>
             </Row>
         </>
     )
+
 }
 
 export default Main;
