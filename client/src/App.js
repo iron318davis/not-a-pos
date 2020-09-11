@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, useLocation, Route, Link } from "react-router-dom";
+// import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 // import CompleteNavbar from './components/CompleteNavbar';
 import FoH from './pages/foh'

@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
+// import ReactDOM from 'react-dom';
 import API from "../utils/API"
 import CompleteNavbar from '../components/CompleteNavbar';
 import Appetizers from '../components/Menus/Appetizers';
 import Sides from '../components/Menus/Sides';
 import Main from '../components/Menus/Main';
 import Drinks from '../components/Menus/Drinks';
-import { Row, Col, Card, Button,Table } from 'react-bootstrap';
+import { TestList, TestListItem } from '../components/TestList';
+import { Row, Col, Card, Button,Table } from 'react-bootstrap'; 
 
 function FoH() {
+// LOADING CATEGORIES TO PUT ON PAGE =================================================================
+    const [categories, setCategories] = useState({
+        categories_id: "",
+        category_name: ""
+    })
+// Load all categories and store them with setCategories
+    useEffect(() => {
+    loadCategories()
+    }, [])
+// Loads all categories and sets them to categories
+    function loadCategories() {
+    API.getCategories()
+      .then(res => 
+        setCategories(res.data)
+      )
+      .catch(err => console.log(err));
+    };
+// END LOADING CATEGORIES TO PUT ON PAGE goes to categories.length =============================================================
 
     const [toggleSides, setToggleSides] = useState({
         display: "none"
@@ -81,7 +100,9 @@ function FoH() {
     function handleOrderSubmit(event) {
         event.preventDefault();
         API.saveOrder({
+            // 
             orderID: 1,
+            // 
             employeeID: 1,
             subtotal: 2.22,
             total: 2.22
@@ -146,6 +167,28 @@ function FoH() {
                     {/* </Card> */}
                 </Col>
             </Row>
+{/* TESTING OUT CALLING TO DB AND GETTING CATEGORIES USING categories.length =======================================================*/}
+{/* HAD TO CREATE FOLDER components/TestList for this to work but that folder is not needed in final product========================*/}
+            <Row>
+            {categories.length ? (
+              <TestList>
+                {categories.map(category => {
+                  return (
+                    <TestListItem>
+                      <a href={"/categories/" + category.id}>
+                        <strong>
+                          Category ID = {category.id} Category Name = {category.category_name}
+                        </strong>
+                      </a>
+                    </TestListItem>
+                  );
+                })}
+              </TestList>
+            ) : (
+              <h3>Categories.Length No Results to Display</h3>
+            )}
+            </Row>
+{/* END TESTING OUT CALLING TO DB AND GETTING CATEGORIES USING categories.length ================================================== */}
 
 
         </div> 
