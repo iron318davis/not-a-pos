@@ -1,33 +1,36 @@
 'use strict';
 
+//const Categories = require('./Categories');
+//comment
+
 module.exports = function (sequelize, DataTypes) {
     const Menu = sequelize.define(
         "Menu",
         {
             menu_id: {
-                Type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true
             },
             itemName: {
-                Type: DataTypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             },
             categoryID: {
-                Type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'Categories',
-                    key: 'categories_id'
-                }
+                type: DataTypes.INTEGER,
+                allowNull: false
+                // references: {
+                //     model: Categories,
+                //     key: 'categories_id'
+                // }
             },
             price: {
-                Type: DataTypes.DECIMAL(13, 2),
+                type: DataTypes.DECIMAL(13, 2),
                 allowNull: false
             },
             item_description: {
-                Type: DataTypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             }
         },
@@ -36,8 +39,8 @@ module.exports = function (sequelize, DataTypes) {
         }
     );
     Menu.associate = function (models) {
-        Menu.belongsTo(models.Categories,
-            { foreignKey: 'categories_id', as: 'categoryID' })
+        Menu.hasOne(models.Categories,
+            { foreignKey: 'categories_id' })
     };
 
     return Menu;
