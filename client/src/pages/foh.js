@@ -136,27 +136,27 @@ function FoH() {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
         setOrder({ Order: [...orderState.Order.concat(foodItem)] })
     };
-
-
-
-
+    let i = 1;
     function handleOrderSubmit(event) {
         event.preventDefault();
+        console.log(orderState.Order[0]);
+        console.log(orderState.Order[0]);
+        orderState.Order.map(thing => {console.log(thing.itemName)});
+        orderState.Order.map(thing =>
         API.saveOrder({
-            orderID: 1,
+            
             employeeID: 1,
-            subtotal: 2.22,
+            subtotal: thing.price,
             total: 2.22
-        })
-            .then(() => setOrder({
-                Order: []
-            }))
-            //.then(() => loadBooks())
-            .catch(err => console.log(err));
+            
+        }))
+            // .then(() => setOrder({
+            //     Order: []
+            // }))
+            // //.then(() => loadBooks())
+            // .catch(err => console.log(err));
     }
 
-
- 
     return (
         <div>
             <Row>
