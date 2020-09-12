@@ -4,6 +4,7 @@ import API from "../utils/API"
 // import CompleteNavbar from '../components/CompleteNavbar';
 import Appetizers from '../components/Menus/Appetizers';
 import Sides from '../components/Menus/Sides';
+import Dessert from '../components/Menus/Dessert'
 import Main from '../components/Menus/Main';
 import Drinks from '../components/Menus/Drinks';
 import { Row, Col, Card, Button,Table } from 'react-bootstrap'; 
@@ -180,16 +181,19 @@ function FoH() {
                 <Col xs={1}></Col>
                 <Col xs={6} >
                     <Card style={toggleSides}>
-                        <Sides addArrayItem={addToArray} />
+                        <Sides notAKey={5} addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleAppetizers}>
                         <Appetizers notAKey={1} addArrayItem={addToArray} />
                     </Card>
+                    <Card style={toggleDessert}>
+                        <Dessert notAKey={3} addArrayItem={addToArray} />
+                    </Card>
                     <Card style={toggleMain}>
-                        <Main addArrayItem={addToArray} />
+                        <Main notAKey={2} addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleDrinks}>
-                        <Drinks addArrayItem={addToArray} />
+                        <Drinks notAKey={4} addArrayItem={addToArray} />
                     </Card>
                 </Col>
                 <Col xs={1}></Col>
@@ -230,6 +234,5 @@ function FoH() {
         </div> 
     )
 }
-
 
 export default FoH;

@@ -1,26 +1,76 @@
-import React from 'react';
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import React, { useState, useEffect }from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import API from '../../../utils/API';
 import './style.css';
 
-function Drinks(props) {
+
+function Dessert(props) {
     const handleClick = (item) => { props.addArrayItem(item) }
 
+// LOADING CATEGORYITEMS TO PUT IN CATEGORIES =====================================================================================
+const [categoryitems, setCategoryItems] = useState({
+    menu_id: "",
+    itemName: "",
+    categoryID: "",
+    price: "",
+    item_description: ""
+})
+// Load all CATEGORYITEMS and store them with setMenuItems
+useEffect(() => {
+    console.log("Console logging our Appetizers Props.Key = " + props.notAKey)
+    loadCategoryItems(props.notAKey)
+}, [])
+// Loads all CATEGORYITEMS and sets them to menuitems
+function loadCategoryItems(key) {
+API.getCategoryItems(key)
+  .then(res => {
+    console.log(res.data);
+    setCategoryItems(categoryitems.test = res.data);
+  })
+  .catch(err => console.log(err));
+};
+// END LOADING CATEGORYITEMS TO PUT IN CATEGORIES goes to categories.length =============================================================
+
+
+// OLD STATIC ITEM TO ADD TO ORDER WINDOW ============================================================================
     const item = {
-        name: "Drink",
-        cost: "3.50",
-        desc: "Coming from Drinks"
+        name: "DessertStatic",
+        cost: "3.55",
+        desc: "Coming from Drinks/index.js"
     }
-    // ^ This probably needs to be an array and then do a DB call to import button names
+// END OLD STATIC ITEM TO ADD TO ORDER WINDOW ========================================================================
+// DYNAMIC ITME TO ADD TO ORDER WINDOW ===============================================================================
+    // const item = {
+    //     // Needs to be MENUS table item pulled in here
+    // }
+    
+
+// END DYNAMIC ITME TO ADD TO ORDER WINDOW ===========================================================================
 
     return (
         <>
-            <Row>
+            <Row >
+            {categoryitems.length ? (
+                categoryitems.map(row => {
+                    const items = {
+                        itemName: row.itemName,
+                        item_description: row.item_description,
+                        price: row.price,
+                        menu_id: row.menu_id,
+                        categoryID: row.categoryID
+                    }
+                    return (
                 <Col>
-                    <Button className = 'drink-buttons' variant="secondary" onClick={() => { handleClick(item) }}>Drinks</Button>
+                    <Button className="Drinks-row-button" variant="secondary" onClick={() => { handleClick(items) }} >{row.itemName}</Button>
                 </Col>
+                );
+                    })
+                ) : (
+                <h3>Categoryitems.Length No Results to Display</h3>
+                )}
             </Row>
         </>
     )
 }
 
-export default Drinks;
+export default Dessert;
