@@ -23,12 +23,12 @@ app.use(routes);
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-app.get('*', function (req, res) {
-  console.log("server.js line 40")
-  const index = path.join(__dirname, 'build', 'index.html');
-  res.sendFile(index);
-  console.log("server.js line 43")
-});
+// app.get('*', function (req, res) {
+//   console.log("server.js line 40")
+//   const index = path.join(__dirname, 'build', 'index.html');
+//   res.sendFile(index);
+//   console.log("server.js line 43")
+// });
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
