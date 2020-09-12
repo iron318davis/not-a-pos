@@ -27,8 +27,11 @@ export default {
   },
 
   // FILL CATEGORIES WITH FOOD ITEMS
-  getCategoryItems: function(categories_id) {
-    return axios.get("/api/categories/" + categories_id)
+  getCategoryItems: function(key) {
+    console.log("getCategoryItems key: " + key)
+    const resp = axios.get("/api/categories/" + key)
+    console.log("getCategoryItems" + resp)
+    return resp
   },
 
   // BOH GET ORDERS

@@ -13,13 +13,23 @@ module.exports = {
         console.log("HIT categoriesController THEN" + dbModel)
       })
       .catch(err => res.status(422).json(err));
+  },
+
+
+  findByID: function(req, res) {
+    console.log("Hit categoriesController findByID" + req.params.id)
+    var query = {categoryID: req.params.id};
+    db.Menu
+      .findAll({where: query})
+      .then(function(dbModel) 
+      { 
+        res.json(dbModel)
+        console.log("HIT categoriesController THEN" + dbModel)
+      })
+      .catch(err => res.status(422).json(err));
   }
-//   findById: function(req, res) {
-//     db.Book
-//       .findById(req.params.id)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
+
+
                     //   create: function(req, res) {
                     //     db.Order
                     //       .create(req.body)

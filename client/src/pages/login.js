@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import CompleteNavbar from './../components/CompleteNavbar'
+// import CompleteNavbar from './../components/CompleteNavbar'
 
 import { Col, Container, Row } from 'react-bootstrap';
 import NumPad from './../components/NumPad';
@@ -38,7 +38,7 @@ function Login() {
 
     return(
         <div>
-        <CompleteNavbar />
+        {/* <CompleteNavbar /> */}
         
         <Container className='text-center mt-5' id='home-container'>
         <Row>
