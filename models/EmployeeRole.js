@@ -5,13 +5,13 @@ module.exports = function (sequelize, DataTypes) {
     "Employee_Role",
     {
       employee_role_id: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
       },
       roleName: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       }
     },

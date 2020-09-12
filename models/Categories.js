@@ -5,13 +5,13 @@ module.exports = function (sequelize, DataTypes) {
         "Categories",
         {
             categories_id: {
-                Type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true
               },
             category_name: {
-                Type: DataTypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             }
         },

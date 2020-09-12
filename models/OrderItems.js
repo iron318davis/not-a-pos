@@ -1,33 +1,36 @@
 'use strict';
 
+// const Order = require('./Order');
+// const Employees = require('./Employees');
+
 module.exports = function (sequelize, DataTypes) {
     const OrderItems = sequelize.define(
         "OrderItems",
         {
             'ID': {
-                Type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true
             },
             orderID: {
-                Type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'Order',
-                    key: 'orderID'
-                }
+                type: DataTypes.INTEGER,
+                allowNull: false
+                // references: {
+                //     model: 'Order',
+                //     key: 'orderID'
+                // }
             },
             menuID: {
-                Type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'Menu',
-                    key: 'menu_id'
-                }
+                type: DataTypes.INTEGER,
+                allowNull: false
+                // references: {
+                //     model: 'Menu',
+                //     key: 'menu_id'
+                // }
             },
             ItemName: {
-                Type: DataTypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             }
         },
@@ -36,12 +39,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     );
     OrderItems.associate = function (models) {
-        OrderItems.belongsTo(models.Order,
-            { foreignKey: 'orderID', as: 'orderID' })
+        OrderItems.hasOne(models.Order,
+            { foreignKey: 'orderID' })
     };
-    OrderItems.associate = function (Menu) {
-        OrderItems.belongsTo(models.Employees,
-            { foreignKey: 'menu_id', as: 'menuID' })
+    OrderItems.associate = function (models) {
+        OrderItems.hasOne(models.Employees,
+            { foreignKey: 'menu_id' })
     };
 
     return OrderItems;

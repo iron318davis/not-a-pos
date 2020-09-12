@@ -1,17 +1,19 @@
 'use strict';
 
+//const Employees = require('./Employees');
+
 module.exports = function (sequelize, DataTypes) {
     const Order = sequelize.define(
         "Order",
         {
             orderID: {
-                Type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
                 primaryKey: true
             },
             employeeID: {
-                Type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
                     model: 'Employees',
@@ -19,15 +21,15 @@ module.exports = function (sequelize, DataTypes) {
                 }
             },
             orderDtTm: {
-                Type: DataTypes.DATETIME,
-                defaultValue: Sequelize.NOW
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
             },
             subtotal: {
-                Type: DataTypes.DECIMAL(13,2),
+                type: DataTypes.DECIMAL(13,2),
                 allowNull: false
             },
             total: {
-                Type: DataTypes.DECIMAL,
+                type: DataTypes.DECIMAL,
                 allowNull: false
             }
         },
@@ -37,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
     );
     Order.associate = function (models) {
         Order.belongsTo(models.Employees,
-            { foreignKey: 'employee_id', as: 'employeeID' })
+            { foreignKey: 'employee_id' })
     };
 
     return Order;

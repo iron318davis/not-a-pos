@@ -1,50 +1,53 @@
 'use strict';
 
+//const Employee_Role = require('./EmployeeRole');
+//import Employee_Role from './EmployeeRole';
+
 module.exports = function (sequelize, DataTypes) {
   const Employees = sequelize.define(
     "Employees",
     {
       employee_id: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
       },
       firstName: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       lastName: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       pin: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       clocked_in: {
-        Type: DataTypes.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         defaultValue: 0
       },
       address: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       city: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       phone: {
-        Type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       roleID: {
-        Type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'EmployeeRole',
-          key: 'employee_role_id'
-        }
+        type: DataTypes.INTEGER,
+        allowNull: false
+        // references: {
+        //   model: Employee_Role,
+        //   key: 'employee_role_id'
+        // }
       }
     },
     {
@@ -52,9 +55,11 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
   Employees.associate = function (models) {
-    Employees.belongsTo(models.EmployeeRole,
-      { foreignKey: 'employee_role_id', as: 'roleID' })
+    Employees.hasOne(models.Employee_Role,
+      { foreignKey: 'employee_role_id' })
   };
+
+
 
   return Employees;
 };
