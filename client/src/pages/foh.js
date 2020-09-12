@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 // import ReactDOM from 'react-dom';
 import API from "../utils/API"
-import CompleteNavbar from '../components/CompleteNavbar';
+// import CompleteNavbar from '../components/CompleteNavbar';
 import Appetizers from '../components/Menus/Appetizers';
 import Sides from '../components/Menus/Sides';
 import Main from '../components/Menus/Main';
 import Drinks from '../components/Menus/Drinks';
-import { TestList, TestListItem } from '../components/TestList';
 import { Row, Col, Card, Button,Table } from 'react-bootstrap'; 
 
 function FoH() {
-// LOADING CATEGORIES TO PUT ON PAGE =================================================================
+// LOADING CATEGORIES TO PUT ON PAGE ===========================================================================================
     const [categories, setCategories] = useState({
-        categories_id: "",
+        id: "",
         category_name: ""
     })
 // Load all categories and store them with setCategories
@@ -22,13 +21,44 @@ function FoH() {
 // Loads all categories and sets them to categories
     function loadCategories() {
     API.getCategories()
-      .then(res => 
-        setCategories(res.data)
-      )
+      .then((res) => {
+        setCategories(res.data);
+        console.log("setCategories Response Data = " + res);
+      })
       .catch(err => console.log(err));
     };
 // END LOADING CATEGORIES TO PUT ON PAGE goes to categories.length =============================================================
 
+
+
+
+
+// // LOADING CATEGORYITEMS TO PUT IN CATEGORIES =====================================================================================
+// const [categoryitems, setCategoryItems] = useState({
+//     menu_id: "",
+//     itemName: "",
+//     categoryID: "",
+//     price: "",
+//     item_description: ""
+// })
+// // Load all CATEGORYITEMS and store them with setMenuItems
+// useEffect(() => {
+// loadCategoryItems()
+// }, [])
+// // Loads all CATEGORYITEMS and sets them to menuitems
+// function loadCategoryItems() {
+// API.getCategoryItems()
+//   .then(res => 
+//     setCategoryItems(res.data)
+//   )
+//   .catch(err => console.log(err));
+// };
+// // END LOADING CATEGORYITEMS TO PUT IN CATEGORIES goes to categories.length =============================================================
+
+
+
+
+// SHOW OR HIDE CATEGORIES =====================================================================================================
     const [toggleSides, setToggleSides] = useState({
         display: "none"
     });
@@ -41,16 +71,22 @@ function FoH() {
     const [toggleDrinks, setToggleDrinks] = useState({
         display: "none"
     });
+    const [toggleDessert, setToggleDessert] = useState({
+        display: "none"
+    });
 
     function disableAll() {
         setToggleSides({ display: "none" });
         setToggleAppetizers({ display: "none" })
         setToggleMain({ display: "none" })
         setToggleDrinks({ display: "none" })
+        setToggleDessert({ display: "none" })
     }
         // This shows the menu options when you click a "Menu Group"
         // enableMenu gets menu from CompleteNavbar buttons
     function enableMenu(menu) {
+        console.log("test")
+        console.log(menu)
         if (menu === "Sides") {
             disableAll();
             setToggleSides({ display: "inline-block" });
@@ -62,7 +98,7 @@ function FoH() {
             console.log({ toggleAppetizers })
 
         }
-        else if (menu === "Main") {
+        else if (menu === "Mains") {
             disableAll();
             setToggleMain({ display: "inline-block" });
             console.log({ toggleMain })
@@ -70,9 +106,13 @@ function FoH() {
             disableAll();
             setToggleDrinks({ display: "inline-block" });
             console.log({ toggleDrinks })
-        }
+        } else if (menu === "Dessert") {
+            disableAll();
+            setToggleDessert({ display: "inline-block" });
+            console.log({ toggleDessert })
     }
-
+}
+// END SHOW OR HIDE CATEGORIES ==================================================================================================
 
 
 
@@ -84,9 +124,11 @@ function FoH() {
 
     const addToArray = (inputObject) => {
         let foodItem = {
-            name: inputObject.name,
-            cost: inputObject.cost,
-            desc: inputObject.desc
+            menu_id: inputObject.menu_id,
+            itemName: inputObject.itemName,
+            categoryID: inputObject.categoryID,
+            price: inputObject.price,
+            item_description: inputObject.item_description
         };
 
         // Look into .concat vs .push for Stateful components
@@ -100,9 +142,7 @@ function FoH() {
     function handleOrderSubmit(event) {
         event.preventDefault();
         API.saveOrder({
-            // 
             orderID: 1,
-            // 
             employeeID: 1,
             subtotal: 2.22,
             total: 2.22
@@ -118,7 +158,24 @@ function FoH() {
  
     return (
         <div>
-            <CompleteNavbar enableMenu={enableMenu} />
+            <Row>
+                <Col xs={1}></Col>
+            {categories.length ? (
+                categories.map(category => {
+                    return (
+                    <div>
+                    <Col xs={1}>
+                    <Button onClick={() => enableMenu(category.category_name)}>{category.category_name}</Button>
+                    </Col>
+                    </div>
+                    );
+                })
+            ) : (
+              <h3>Categories.Length No Results to Display</h3>
+            )}
+            </Row>
+        
+
             <Row>
                 <Col xs={1}></Col>
                 <Col xs={6} >
@@ -126,7 +183,7 @@ function FoH() {
                         <Sides addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleAppetizers}>
-                        <Appetizers addArrayItem={addToArray} />
+                        <Appetizers notAKey={1} addArrayItem={addToArray} />
                     </Card>
                     <Card style={toggleMain}>
                         <Main addArrayItem={addToArray} />
@@ -136,6 +193,8 @@ function FoH() {
                     </Card>
                 </Col>
                 <Col xs={1}></Col>
+
+{/* ORDER TABLE ON FOH STARTS HERE ========================================================================= */}
                 <Col xs={3}> 
                     {/* <Card> */}
                         <Table striped bordered hover>
@@ -151,13 +210,13 @@ function FoH() {
                                 <tbody>
                                 <tr>
                                     <td>
-                                        {row.name}
+                                        {row.itemName}
                                     </td>
                                     <td>
-                                        {row.desc}
+                                        {row.item_description}
                                     </td>
                                     <td>
-                                        {row.cost}
+                                        {row.price}
                                     </td>
                                 </tr>
                                 </tbody>
@@ -166,33 +225,11 @@ function FoH() {
                         <Button variant='success' onClick={handleOrderSubmit}>Submit Order</Button>
                     {/* </Card> */}
                 </Col>
+{/*END ORDER TABLE ON FOH STARTS HERE ========================================================================= */}
             </Row>
-{/* TESTING OUT CALLING TO DB AND GETTING CATEGORIES USING categories.length =======================================================*/}
-{/* HAD TO CREATE FOLDER components/TestList for this to work but that folder is not needed in final product========================*/}
-            <Row>
-            {categories.length ? (
-              <TestList>
-                {categories.map(category => {
-                  return (
-                    <TestListItem>
-                      <a href={"/categories/" + category.id}>
-                        <strong>
-                          Category ID = {category.id} Category Name = {category.category_name}
-                        </strong>
-                      </a>
-                    </TestListItem>
-                  );
-                })}
-              </TestList>
-            ) : (
-              <h3>Categories.Length No Results to Display</h3>
-            )}
-            </Row>
-{/* END TESTING OUT CALLING TO DB AND GETTING CATEGORIES USING categories.length ================================================== */}
-
-
         </div> 
     )
 }
+
 
 export default FoH;

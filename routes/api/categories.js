@@ -10,9 +10,8 @@ router.route("/")
 // Matches with "/api/books/:id"
 // USE TO GET CATEGORY/:MENU?
 // COULD ALSO BE CATEGORY/:MENUS DEPENDING ON HOW WE DO DATABASE
-router
-  .route("/:id")
-//   .get(categoriesController.findById)
+router.route("/:id")
+  .get(categoriesController.findByID)
 //   .put(categoriesController.update)
 //   .delete(categoriesController.remove);
 
