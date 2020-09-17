@@ -3,8 +3,9 @@ const ordersController = require("../../controllers/ordersController");
 
 // Matches with "/api/books"
 router.route("/")
-//   .get(ordersController.findAll)
-  .post(ordersController.create);
+  .get(ordersController.findAll)
+  .post(ordersController.create)
+  .put(ordersController.setOrderCooked);
 
 // Matches with "/api/books/:id"
 router

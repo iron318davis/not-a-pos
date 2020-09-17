@@ -36,12 +36,12 @@ export default {
 
   // BOH GET ORDERS
   getToCookOrders: function() {
-    return axios.get("/api/orders")
+    return axios.get("/api/order")
   },
 
   //FOH COOKED ORDERS
-  getToServeOrders: function() {
-
+  completeOrder: function() {
+    return axios.put("/api/order")
   }
 
 
