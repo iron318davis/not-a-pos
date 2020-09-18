@@ -30,35 +30,6 @@ function FoH() {
     };
 // END LOADING CATEGORIES TO PUT ON PAGE goes to categories.length =============================================================
 
-
-
-
-
-// // LOADING CATEGORYITEMS TO PUT IN CATEGORIES =====================================================================================
-// const [categoryitems, setCategoryItems] = useState({
-//     menu_id: "",
-//     itemName: "",
-//     categoryID: "",
-//     price: "",
-//     item_description: ""
-// })
-// // Load all CATEGORYITEMS and store them with setMenuItems
-// useEffect(() => {
-// loadCategoryItems()
-// }, [])
-// // Loads all CATEGORYITEMS and sets them to menuitems
-// function loadCategoryItems() {
-// API.getCategoryItems()
-//   .then(res => 
-//     setCategoryItems(res.data)
-//   )
-//   .catch(err => console.log(err));
-// };
-// // END LOADING CATEGORYITEMS TO PUT IN CATEGORIES goes to categories.length =============================================================
-
-
-
-
 // SHOW OR HIDE CATEGORIES =====================================================================================================
     const [toggleSides, setToggleSides] = useState({
         display: "none"
@@ -115,9 +86,8 @@ function FoH() {
 }
 // END SHOW OR HIDE CATEGORIES ==================================================================================================
 
-
-
-
+    let i = 1;
+    const [count, setCount] = useState(0);
     const [orderState, setOrder] = useState({
         // This will hold the clicked order items
         Order: [],
@@ -136,25 +106,31 @@ function FoH() {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
         setOrder({ Order: [...orderState.Order.concat(foodItem)] })
     };
-    let i = 1;
+    
     function handleOrderSubmit(event) {
+        
         event.preventDefault();
         console.log(orderState.Order[0]);
-        console.log(orderState.Order[0]);
+        console.log(count);
         orderState.Order.map(thing => {console.log(thing.itemName)});
         orderState.Order.map(thing =>
         API.saveOrder({
             
             employeeID: 1,
             subtotal: thing.price,
-            total: 2.22
+            total: 0.00,
+            ordercooked: 0,
+            actualorderID: count,
+            itemName: thing.itemName
             
-        }))
-            // .then(() => setOrder({
-            //     Order: []
-            // }))
-            // //.then(() => loadBooks())
-            // .catch(err => console.log(err));
+        })
+            .then(() => setOrder({
+                Order: []
+            }), setCount(count + 1))
+            //.then(() => loadBooks())
+            .catch(err => console.log(err))
+
+        );
     }
 
     return (

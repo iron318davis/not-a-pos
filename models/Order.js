@@ -31,6 +31,16 @@ module.exports = function (sequelize, DataTypes) {
             total: {
                 type: DataTypes.DECIMAL,
                 allowNull: false
+            },
+            ordercooked:{
+                type: DataTypes.INTEGER,
+                defaultValue: 0
+            },
+            actualorderID:{
+                type: DataTypes.INTEGER
+            },
+            itemName:{
+                type: DataTypes.STRING
             }
         },
         {
