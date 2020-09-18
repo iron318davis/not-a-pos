@@ -40,8 +40,8 @@ export default {
   },
 
   //FOH COOKED ORDERS
-  completeOrder: function() {
-    return axios.put("/api/order")
+  completeOrder: function(key) {
+    return axios.put("/api/order/"  + key)
   }
 
 
