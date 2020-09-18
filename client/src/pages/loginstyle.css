@@ -15,11 +15,11 @@
   }
   
   #homeBackGround{
-    /* background-image: url('../../images/restaurant4.jpg'); */
-    height: 100%;
+    background-image: url('./img/eat.jpg');
+    /* height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
   }
   
   #greetingContainer {
