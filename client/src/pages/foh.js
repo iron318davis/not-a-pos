@@ -142,6 +142,7 @@ function FoH() {
                     return (
                     <div>
                     <Col xs={1}>
+                        {/* buttons for top row */}
                     <Button className ='aptbtn' onClick={() => enableMenu(category.category_name)}>{category.category_name}</Button>
                     </Col>
                     </div>
