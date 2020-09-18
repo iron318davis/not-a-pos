@@ -8,7 +8,7 @@ import Dessert from '../components/Menus/Dessert'
 import Main from '../components/Menus/Main';
 import Drinks from '../components/Menus/Drinks';
 import { Row, Col, Card, Button,Table } from 'react-bootstrap'; 
-
+import './style.css';
 function FoH() {
 // LOADING CATEGORIES TO PUT ON PAGE ===========================================================================================
     const [categories, setCategories] = useState({
@@ -142,7 +142,8 @@ function FoH() {
                     return (
                     <div>
                     <Col xs={1}>
-                    <Button onClick={() => enableMenu(category.category_name)}>{category.category_name}</Button>
+                        {/* buttons for top row */}
+                    <Button className ='aptbtn' onClick={() => enableMenu(category.category_name)}>{category.category_name}</Button>
                     </Col>
                     </div>
                     );

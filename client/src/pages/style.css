@@ -1,11 +1,26 @@
 .Pre-Order {
     background-color: Blue !important; 
+    padding: 15px 32px !important;
+    text-align: center !important;
 }
 
 .Nxt-Order {
     background-color: Blue !important; 
+    padding: 15px 40px !important;
+    text-align: center;
+   
 }
 
 .cpm-Order {
-    background-color: red !important; 
+    background-color: red !important;
+    padding: 15px 32px !important;
+    text-align: center; 
+   
+}
+.aptbtn {
+    background-color: blue !important;
+    
+    padding: 20px 36px !important;
+    text-align: center; 
+    width: 135px !important;
 }

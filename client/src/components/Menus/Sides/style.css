@@ -1,4 +1,9 @@
 .Sides-row-buttons{
-    padding: 10x ;
-    background-color: red !important; 
+    background-color: rgb(253, 18, 18) !important;
+  color: white !important;
+  padding: 25px 16px !important;
+  display: inline-block !important;
+  font-size: 16px !important;
+  width: 160px !important;
+  
 }
