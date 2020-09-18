@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Secret2020$",
+    "password": null,
     "database": "pos_db",
     "host": "127.0.0.1",
     "port": 3306,
