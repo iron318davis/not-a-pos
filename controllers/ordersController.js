@@ -1,37 +1,35 @@
 const db = require("../models");
+const sequelize = require("sequelize");
 
-// Defining methods for the booksController
+
+// Defining methods for the ordersController
 module.exports = {
-//   findAll: function(req, res) {
-//     db.Book
-//       .find(req.query)
-//       .sort({ date: -1 })
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   findById: function(req, res) {
-//     db.Book
-//       .findById(req.params.id)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
+  findAll: function(req, res) {
+    db.sequelize.query('SELECT * from pos_db.order where ordercooked = 0 AND actualorderID IN (SELECT min(actualorderID) FROM pos_db.order where ordercooked = 0)')
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.log(err),
+        res.send(err)
+      });
+  },
+
   create: function(req, res) {
     db.Order
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  setOrderCooked: function(req, res) {
+    db.sequelize.query('update pos_db.order set ordercooked = 1 where ordercooked = 0 and actualorderID = ?',
+    {
+      replacements: [req.params.id]
+    } )
+    .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.log(err),
+        res.send(err)
+      });
   }
-//   update: function(req, res) {
-//     db.Book
-//       .findOneAndUpdate({ _id: req.params.id }, req.body)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   remove: function(req, res) {
-//     db.Book
-//       .findById({ _id: req.params.id })
-//       .then(dbModel => dbModel.remove())
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   }
+
 };

@@ -18,7 +18,15 @@ function BoH() {
     useEffect(() => {
         const interval = setInterval(() => {
             API.getToCookOrders()
-                .then((res) => { console.log('BOH LOGGING', res); setserverreturned({ DatabaseOrderItems: res.data[0] }); console.log('MORE LOGGING' + res.data[0][0].itemName) })
+                .then((res) => { 
+                    console.log('BOH LOGGING', res); 
+                    if (res.data && res.data.length > 0 ) 
+                        setserverreturned({DatabaseOrderItems: res.data[0] }); 
+                    // console.log('MORE LOGGING' + res.data[0][0].itemName) 
+                    else {
+                        setserverreturned( {DatabaseOrderItems: []})
+                    }
+                })
             // res.data[0] is an array of all order items rows in database ie
             // 0: {orderID: 1, employeeID: 1, orderDtTm: "2020-09-17T20:58:29.000Z", subtotal: "5.99", total: "0", …}
             // 1: {orderID: 2, employeeID: 1, orderDtTm: "2020-09-17T20:58:29.000Z", subtotal: "6.99", total: "0", …}
@@ -42,16 +50,12 @@ function BoH() {
             // {"orderID":2,"employeeID":1,"orderDtTm":"2020-09-17T21:42:37.000Z","subtotal":"5.99","total":"0","ordercooked":0,"actualorderID":0,"itemName":"Onion Rings","createdAt":"2020-09-17T21:42:37.000Z","updatedAt":"2020-09-17T21:42:37.000Z","employee_id":null},
             // {"orderID":3,"employeeID":1,"orderDtTm":"2020-09-17T21:42:37.000Z","subtotal":"6.99","total":"0","ordercooked":0,"actualorderID":0,"itemName":"Cheese Curds","createdAt":"2020-09-17T21:42:37.000Z","updatedAt":"2020-09-17T21:42:37.000Z","employee_id":null}
             // ]
-        }, 10000)
+        }, 3000)
         return () => clearInterval(interval);
     }, [])
 
     function handleOrderComplete() {
-        API.completeOrder({
-            
-            
-            
-        })
+        API.completeOrder(serverreturned.DatabaseOrderItems[0].actualorderID)
     };
 
     return (
