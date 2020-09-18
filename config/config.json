@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "Rk0978tb",
+=======
+    "password": null,
+>>>>>>> 80220cf170455e949245d67bc637c2233bd4035e
     "database": "pos_db",
     "host": "127.0.0.1",
     "port": 3306,
