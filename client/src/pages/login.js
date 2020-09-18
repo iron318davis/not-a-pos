@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-// import CompleteNavbar from './../components/CompleteNavbar'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import API from "../utils/API"
 import { Col, Container, Row } from 'react-bootstrap';
 import NumPad from './../components/NumPad';
@@ -65,8 +64,10 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id='homeBackGround'>
       {/* <CompleteNavbar /> */}
+      <li><Link to="/FoH"><i className="fas fa-utensils fa-2x"></i></Link></li> <br></br>
+      <li><Link to="/BoH"><i className="fas fa-fire-alt fa-2x"></i></Link></li>
 
       <Container className='text-center mt-5' id='home-container'>
         <Row>
@@ -74,7 +75,6 @@ function Login() {
             <NumPad {...props} />
           </Col>
         </Row>
-
       </Container>
     </div>
   )

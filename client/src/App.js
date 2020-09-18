@@ -13,13 +13,10 @@ function App() {
   return (
     <Router>
       <div>
-        <Link to="/FoH">Front of House</Link> <br></br>
-        <Link to="/BoH">Back of House</Link>
-
         <Switch>
           <Route exact path="/">
             <Login />
-          </Route> 
+          </Route>
           <Route path="/FoHBoHMan">
             <FohBohMan />
           </Route>
