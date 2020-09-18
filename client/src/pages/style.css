@@ -1,11 +1,17 @@
 .Pre-Order {
     background-color: Blue !important; 
+    padding: 15px 32px !important;
+    text-align: center;
 }
 
 .Nxt-Order {
     background-color: Blue !important; 
+    padding: 15px 32px !important;
+    text-align: center;
 }
 
 .cpm-Order {
-    background-color: red !important; 
+    background-color: red !important;
+    padding: 15px 32px !important;
+    text-align: center; 
 }
