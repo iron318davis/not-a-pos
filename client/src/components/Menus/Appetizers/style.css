@@ -1,4 +1,9 @@
 .Appetizers-row-button{
-    padding-top: 10%;
-    background-color: rgb(144, 146, 145) !important; 
+ background-color: #4CAF50 !important;
+  color: white !important;
+  padding: 25px 16px !important;
+  display: inline-block !important;
+  font-size: 16px !important;
+  width: 160px !important;
+  
 }
