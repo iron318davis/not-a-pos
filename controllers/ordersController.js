@@ -6,7 +6,7 @@ const sequelize = require("sequelize");
 module.exports = {
   findAll: function(req, res) {
     // db.sequelize.query('SELECT * from pos_db.order where ordercooked = 0 AND actualorderID IN (SELECT min(actualorderID) FROM pos_db.order where ordercooked = 0)')
-    db.sequelize.query('SELECT * from vl2bu9xmqqsydfa6.Order where ordercooked = 0 AND actualorderID IN (SELECT min(actualorderID) FROM pos_db.order where ordercooked = 0)')
+    db.sequelize.query('SELECT * from `vl2bu9xmqqsydfa6`.`Order` where ordercooked = 0 AND actualorderID IN (SELECT min(actualorderID) FROM pos_db.order where ordercooked = 0)')
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log(err),
@@ -23,7 +23,7 @@ module.exports = {
 
   setOrderCooked: function(req, res) {
     // db.sequelize.query('update pos_db.order set ordercooked = 1 where ordercooked = 0 and actualorderID = ?',
-    db.sequelize.query('update vl2bu9xmqqsydfa6.Order set ordercooked = 1 where ordercooked = 0 and actualorderID = ?',
+    db.sequelize.query('update `vl2bu9xmqqsydfa6`.`Order` set ordercooked = 1 where ordercooked = 0 and actualorderID = ?',
     {
       replacements: [req.params.id]
     } )
