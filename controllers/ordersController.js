@@ -27,7 +27,7 @@ module.exports = {
     {
       replacements: [req.params.id]
     } )
-    .then(dbModel => res.json(dbModel))
+    .then(dbModel => res.json(dbModel)) 
       .catch(err => {
         console.log(err),
         res.send(err)
