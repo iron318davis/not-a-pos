@@ -56,6 +56,7 @@ Insert into pos_db.employees
 Values
 (1,'first1','last1',1,true,'123 Lane1','Minneapolis1','111-222-3333',1, now(), now()),
 (2,'first2','last2',2,true,'123 Lane2','Minneapolis2','111-222-3333',1, now(), now());
+(9,'manager','manager',2,true,'123 Lane2','Minneapolis2','111-222-3333',2, now(), now());
 
 insert into pos_db.employee_role
 (
@@ -80,14 +81,14 @@ values
 
 -- DO NOT RUN ORDER SCRIPT IF YOU ARE ATTEMPTING TO ACTUALLY MAKE AN ORDER 
 
-insert into pos_db.`order`
-(
-    `orderID`,
-    `employeeID`,
-    `subtotal`,
-    `total`,
-	`createdAt`,
-	`updatedAt`
-)
-values
-(1,1,1,1, now(), now());
+-- insert into pos_db.`order`
+-- (
+--     `orderID`,
+--     `employeeID`,
+--     `subtotal`,
+--     `total`,
+-- 	`createdAt`,
+-- 	`updatedAt`
+-- )
+-- values
+-- (1,1,1,1, now(), now());
