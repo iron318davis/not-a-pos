@@ -6,7 +6,27 @@ import NumPad from './../components/NumPad';
 
 import './loginstyle.css';
 
+function Testname(props) {
+  if (props.roleID === 1) {
+    return (
+    <div>
+    <li><Link to="/FoH"><i className="fas fa-utensils fa-2x">Front of House</i></Link></li> <br></br>
+    <li><Link to="/BoH"><i className="fas fa-fire-alt fa-2x">Back of House</i></Link></li>
+    </div>
+    )
+  } else if (props.roleID === 2) {
+    return(
+    <li><Link to="/FoHBoHMan"><i className="fas fa-fire-alt fa-2x">Management</i></Link></li>
+    )
+  } else {
+    return(
+    <div>Kake</div>
+    )
+  }
+}
+
 function Login() {
+  const [roleid, setroleid] = useState(0);
   const [pin, setPin] = useState(``);
 
   const handleBtnInput = event => {
@@ -28,12 +48,16 @@ function Login() {
       API.getPIN(pin)
         .then((res) => {
           console.log('PIN LOGGING', res);
+          // console.log(res.data[0][0].roleID);
           // if (res.data && res.data.length > 0)
           //   setserverreturned({ DatabaseOrderItems: res.data[0] });
           // // console.log('MORE LOGGING' + res.data[0][0].itemName) 
           // else {
           //   setserverreturned({ DatabaseOrderItems: [] })
           // };
+          if (res.data[0].length != 0 ) {
+          setroleid(res.data[0][0].roleID)
+          }
         })
       console.log("After PIN API Call")
     }
@@ -63,11 +87,12 @@ function Login() {
     buttons: buttons
   };
 
+  
+
   return (
     <div id='homeBackGround'>
       {/* <CompleteNavbar /> */}
-      <li><Link to="/FoH"><i className="fas fa-utensils fa-2x"></i></Link></li> <br></br>
-      <li><Link to="/BoH"><i className="fas fa-fire-alt fa-2x"></i></Link></li>
+      <Testname roleID = {roleid} />
 
       <Container className='text-center mt-5' id='home-container'>
         <Row>
@@ -80,4 +105,4 @@ function Login() {
   )
 };
 
-export default Login;
+export default Login ;
