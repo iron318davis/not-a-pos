@@ -36,3 +36,7 @@ NPM Package React, CSS-React Bootstrap, MySQL, Heroku, FastClick (for touch scre
 * Live Website https://enigmatic-escarpment-47829.herokuapp.com/
 
 * Code Repository https://github.com/iron318davis/not-a-pos
+
+### Screenshot
+
+![program working](screenshots/Pinpad.jpg)
