@@ -1,9 +1,9 @@
 # Not-a-POS 
 
-Disclaimer:
-This project is an active work in progress and is a very large undertaking.
-This project was created in 4 weeks and is very technical on the back end.
-Front end is not particularly fancy, but mostly works for testing.
+Disclaimer:  
+This project is an active work in progress and is a very large undertaking.  
+This project was created in 4 weeks and is very technical on the back end.  
+Front end is not particularly fancy, but mostly works for testing.  
 
 ### Authors
 
