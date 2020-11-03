@@ -1,48 +1,49 @@
 # Not-a-POS 
 
-Disclaimer:  
+## Table of Contents
+* [Disclaimer](#disclaimer)
+* [Usage Instructions](#usage-instructions)
+* [Description](#description)
+* [User Story](#story)
+* [Motivation](#motivation)
+* [Technology/Framework Used](#tech)
+* [Links to Webpage and Repository](#links)
+* [Screenshot](#screenshot)
+* [Authors](#authors)
+
+### Disclaimer
+
 This project is an active work in progress and is a very large undertaking.  
 This project was created in 4 weeks and is very technical on the back end.  
 Front end is not particularly fancy, but mostly works for testing.  
 
-### Authors
-
-* Davis Sjoberg
-
-* Thomas Johnson
-
-* Cassandra Perez
-
-
-### Not-a-POS
- 
- Project Description: 
+### Description
  
 A Point-of-Sale system that is web based instead of hardware based.   
 It is a Heroku hosted ReactJS app that utilizes a MySQL database, Node Express routes, and MVC framework to display a user-created menu. 
  
- ### User Story:
+ ### <a name="story"></a>User Story
  
 When the user opens POS system , they will be able to login in with their unique pin, that would grant them access.  
 User then will be able to place an order for either appetizers, drinks etc..  
 Once that’s placed, the cook(BOH) will be able to view the order and begin to cook. 
 
-### Motivation:  
+### Motivation  
 
 The motivation behind our project is knowing when a system like this fails, or stops functioning it can affect the user / and customer experience.  
 Wanted to create something reliable and simple to use. 
 
-### Technology/Framework Used:
+### <a name="tech"></a> Technology/Framework Used
 
 NPM Package React, CSS-React Bootstrap, MySQL, Heroku, FastClick (for touch screen clicks), AccountingJS
 
-### Links to Webpage and Repository:
+### <a name="links"></a> Links to Webpage and Repository:
 
 * Live Website https://enigmatic-escarpment-47829.herokuapp.com/
 
 * Code Repository https://github.com/iron318davis/not-a-pos
 
-### Usage instructions
+### <a name="usage-instructions"></a> Usage Instructions
 
 Currently this project is still being developed so not all features are polished.  
 As such, we deemed it necessary to provide instructions on how to use this app.
@@ -69,3 +70,11 @@ On Login Page
 ### Screenshot
 
 ![program working](screenshots/Pinpad.jpg)
+
+### Authors
+
+* Davis Sjoberg
+
+* Thomas Johnson
+
+* Cassandra Perez
