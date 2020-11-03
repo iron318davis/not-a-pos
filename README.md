@@ -49,12 +49,6 @@ Currently this project is still being developed so not all features are polished
 As such, we deemed it necessary to provide instructions on how to use this app.
 
 As of 11/2\
-Login ID of 1 and 2 work.  This displays Front of House or Back of House URL.\
-There is no link between Front-of-House and Back-of-House as we expect an employee is not doing both jobs.\
-We removed the direct URL restriction so after using a pin number you can navigate to either by using the following URL's:\
-https://enigmatic-escarpment-47829.herokuapp.com/FoH  
-https://enigmatic-escarpment-47829.herokuapp.com/BoH  
-https://enigmatic-escarpment-47829.herokuapp.com/FoHBoHMan (Page is currently under development and would let Managers navigate the entire website)
 
 On Login Page
 * Type or click on 1 and then press Enter or click bottom right button in numpad.
@@ -66,6 +60,14 @@ On Login Page
 * Orders should populate within 3-5 seconds (to prevent potential overuse of API calls to free DB currently being used)
 * Click "Complete Order"
 * Next order (if any) will populate within 3 seconds (Next and Previous buttons not currently functional)
+
+Notes:
+Login ID of 1 and 2 work.  This displays Front of House or Back of House URL.\
+There is no link between Front-of-House and Back-of-House as we expect that an employee is not doing both jobs.\
+We removed the direct URL restriction for testing so after using a pin number you can navigate to either by using the following URL's:\
+https://enigmatic-escarpment-47829.herokuapp.com/FoH  
+https://enigmatic-escarpment-47829.herokuapp.com/BoH  
+https://enigmatic-escarpment-47829.herokuapp.com/FoHBoHMan (Page is currently under development and would let Managers navigate the entire website)
 
 ### Screenshot
 
