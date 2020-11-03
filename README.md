@@ -48,9 +48,9 @@ NPM Package React, CSS-React Bootstrap, MySQL, Heroku, FastClick (for touch scre
 Currently this project is still being developed so not all features are polished.  
 As such, we deemed it necessary to provide instructions on how to use this app.
 
-As of 11/2\
+As of 11/2
 
-On Login Page
+On Login Page https://enigmatic-escarpment-47829.herokuapp.com/
 * Type or click on 1 and then press Enter or click bottom right button in numpad.
 * Click "Front of House" URL
 * Click items to add to order (No delete button yet.  "Sides" category left blank intentionally for demonstration purposes)
@@ -61,7 +61,7 @@ On Login Page
 * Click "Complete Order"
 * Next order (if any) will populate within 3 seconds (Next and Previous buttons not currently functional)
 
-Notes:
+Notes:\
 Login ID of 1 and 2 work.  This displays Front of House or Back of House URL.\
 There is no link between Front-of-House and Back-of-House as we expect that an employee is not doing both jobs.\
 We removed the direct URL restriction for testing so after using a pin number you can navigate to either by using the following URL's:\
